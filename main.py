@@ -25,7 +25,7 @@ logger.basicConfig(
 	level=config.get("logger").pop("level", logger.INFO))
 
 logger.info("Initializing the Client ...")
-app = Client(session_name=config.get("bot_username"), api_id=config.get("app_id"), api_hash=config.get("app_hash"), bot_token=config.get("bot_token"), lang_code="it")
+app = Client(session_name=config.get("bot_username"), api_id=config.get("app_id"), api_hash=config.get("app_hash"), bot_token=config.get("bot_token"), lang_code="it", workdir=".")
 
 
 @app.on_message(Filters.command("print", prefixes="/"))
