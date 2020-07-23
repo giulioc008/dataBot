@@ -69,11 +69,14 @@ async def print_chat(client: Client, message: Message):
 	chat.pop("is_restricted", None)
 	chat.pop("is_scam", None)
 	chat.pop("is_support", None)
-	chat.pop("language_code", None)
+	
+	chat = str(chat)
+	chat = chat.replace("\":", "\": ")
+	chat = chat.replace(",\"", ",\n\"")
 
 	# Printing the chat's data
 	print(chat)
-	await split_send_text("{}".format(chat), "me")
+	await split_send_text(chat, "me")
 
 	logger.info("I\'ve answered to /print because of {}.".format("@{}".format(message.from_user.username) if message.from_user.username is not None else message.from_user.id))
 
